@@ -14,8 +14,8 @@ namespace upo.models {
                 BackgroundColor = c.Color,
                 TextColor = System.Drawing.Color.White,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                WidthRequest = 150,
-                HeightRequest = 80,
+                WidthRequest = 80,
+                HeightRequest = 150,
                 Margin=new Thickness(5),
             };
         }
