@@ -5,7 +5,7 @@ using System.Text;
 
 namespace upo.models {
     public class Deck {
-        List<Card> deckCards = new List<Card>();
+        public List<Card> deckCards = new List<Card>();
         List<System.Drawing.Color> colors = new List<System.Drawing.Color>() {
             System.Drawing.Color.Red,
             System.Drawing.Color.Green,
