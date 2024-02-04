@@ -38,5 +38,26 @@ namespace upo {
             LastCardText.Text = middleCard.Value.ToString();
             LastCardStack.BackgroundColor = middleCard.Color;
         }
+        void SpecialCards(List<Card> target, Card card)
+        {
+            if (deck.deckCards.Count < 10)
+                deck.GenerateCards();
+            if(card.Special == Special.addTwo)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    target.Add(deck.deckCards[i]);
+                    deck.deckCards.RemoveAt(i);
+                }
+            }
+            if(card.Special == Special.addFour)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    target.Add(deck.deckCards[i]);
+                    deck.deckCards.RemoveAt(i);
+                }
+            }
+        }
     }
 }
