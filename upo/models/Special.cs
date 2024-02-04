@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace upo.models {
-    internal class Special {
+    public enum Special {
+        normal=0,
+        addTwo,
+        addFour,
+        color
     }
 }
