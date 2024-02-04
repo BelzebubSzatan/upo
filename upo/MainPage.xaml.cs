@@ -14,11 +14,13 @@ namespace upo {
         List<Card> computerCards = new List<Card>();
         bool playerAction = true;
         bool win = false;
-        Card middleCard=new Card();
-        public MainPage() {
+        Card middleCard = null;
+        public MainPage()
+        {
             InitializeComponent();
             playerCards = deck.GeneratePlayerCards(3);
             computerCards = deck.GeneratePlayerCards(3);
+            Card middleCard=new Card();
             RenderCards();
         }
         public void RenderCards() {
@@ -59,6 +61,39 @@ namespace upo {
 
         private void Button_Clicked(object sender, EventArgs e) {
 
+        }
+        void SetLastCard(Card c = null)
+        {
+            if (middleCard == null)
+            {
+                middleCard = deck.deckCards[0];
+                deck.deckCards.RemoveAt(0);
+            }
+            else
+                middleCard = c;
+            LastCardText.Text = middleCard.Value.ToString();
+            LastCardStack.BackgroundColor = middleCard.Color;
+        }
+        void SpecialCards(List<Card> target, Card card)
+        {
+            if (deck.deckCards.Count < 10)
+                deck.GenerateCards();
+            if(card.Special == Special.addTwo)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    target.Add(deck.deckCards[i]);
+                    deck.deckCards.RemoveAt(i);
+                }
+            }
+            if(card.Special == Special.addFour)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    target.Add(deck.deckCards[i]);
+                    deck.deckCards.RemoveAt(i);
+                }
+            }
         }
     }
 }
