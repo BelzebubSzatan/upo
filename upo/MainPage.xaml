@@ -6,7 +6,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="170"/>
-            <RowDefinition Height="170"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="170"/>
         </Grid.RowDefinitions>
         <StackLayout Orientation="Vertical">
