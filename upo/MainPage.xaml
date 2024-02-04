@@ -13,6 +13,45 @@
             <Label x:Name="ComputerAction"/>
             <Label x:Name="ComputerCards"/>
         </StackLayout>
+        <StackLayout Grid.Row="1"
+                     HeightRequest="200">
+            <FlexLayout JustifyContent="SpaceEvenly">
+                <Frame Margin="0"
+                       Padding="0"
+                       VerticalOptions="FillAndExpand"
+                       WidthRequest="150"
+                       HeightRequest="200"
+                       CornerRadius="10">
+                    <StackLayout BackgroundColor="Black"
+                                 VerticalOptions="FillAndExpand">
+                        <Button Text="Nastepna"
+                                TextColor="White"
+                                BackgroundColor="Transparent"
+                                VerticalOptions="FillAndExpand"
+                                Clicked="Button_Clicked"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Margin="0"
+                       Padding="0"
+                       VerticalOptions="FillAndExpand"
+                       WidthRequest="150"
+                       HeightRequest="200"
+                       CornerRadius="10"
+                       x:Name="LastCardFrame">
+                    <StackLayout BackgroundColor="Black"
+                                 VerticalOptions="FillAndExpand"
+                                 x:Name="LastCardStack">
+                        <Label Text="Nastepna"
+                               TextColor="White"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               VerticalOptions="CenterAndExpand"
+                               x:Name="LastCardText"
+                               FontSize="30"/>
+                    </StackLayout>
+                </Frame>
+            </FlexLayout>
+        </StackLayout>
     </Grid>
 
 </ContentPage>
