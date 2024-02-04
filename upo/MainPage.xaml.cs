@@ -20,10 +20,46 @@ namespace upo {
             InitializeComponent();
             playerCards = deck.GeneratePlayerCards(3);
             computerCards = deck.GeneratePlayerCards(3);
+            Card middleCard=new Card();
+            RenderCards();
+        }
+        public void RenderCards() {
+            if (win)
+                return;
+            PlayerCards.Children.Clear();
+            playerCards = playerCards.OrderBy(x => x.Color.ToString()).ToList();
+            foreach (Card card in playerCards) {
+                Button button = card.RenderCard(card);
+                button.Clicked += CardClicked;
+                button.BindingContext = card;
+                if(playerAction) {
+                    if (card.Color == middleCard.Color || card.Value == middleCard.Value || card.Special == Special.color) {
+                        button.BorderColor = Color.LightGreen;
+                        button.BorderWidth = 3;
+                    }
+                }
+                PlayerCards.Children.Add(button);
+            }
+
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
+        private void CardClicked(object sender, EventArgs e) {
+            if(win) return;
+            Card card = ((Button)sender).BindingContext as Card;
+            if (((Button)sender).BorderColor == Color.LightGreen) {
+                SetLastCard(card);
+                if (card.Special != Special.normal) {
+                    SpecialCards(computerCards,card);
+                }
+                playerCards.Remove(card);
+                playerAction = false;
+                //WinCheck();
+                RenderCards();
+                //ComputerMove();
+            }
+        }
+
+        private void Button_Clicked(object sender, EventArgs e) {
 
         }
         void SetLastCard(Card c = null)
