@@ -9,6 +9,10 @@
             <RowDefinition Height="170"/>
             <RowDefinition Height="170"/>
         </Grid.RowDefinitions>
+        <StackLayout Orientation="Vertical">
+            <Label x:Name="ComputerAction"/>
+            <Label x:Name="ComputerCards"/>
+        </StackLayout>
     </Grid>
 
 </ContentPage>
