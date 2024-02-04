@@ -7,7 +7,7 @@ namespace upo.models {
     public class Card {
         public string Value { get; set; }
         public System.Drawing.Color Color { get; set; }
-
+        public Special Special { get; set; }
         public Button RenderCard(Card c) {
             return new Button() {
                 Text = c.Value,
