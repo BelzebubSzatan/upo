@@ -20,7 +20,8 @@ namespace upo {
             InitializeComponent();
             playerCards = deck.GeneratePlayerCards(3);
             computerCards = deck.GeneratePlayerCards(3);
-            Card middleCard=new Card();
+            Card middleCard = new Card();
+            SetLastCard();
             RenderCards();
         }
         public void RenderCards() {
