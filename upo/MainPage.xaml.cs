@@ -95,5 +95,18 @@ namespace upo {
                 }
             }
         }
+        async void WinCheck()
+        {
+            if (playerCards.Count == 0)
+            {
+                await DisplayAlert("Wygrana", "Wygral gracz!", "Ok");
+                win = true;
+            }    
+            if(computerCards.Count == 0)
+            {
+                await DisplayAlert("Wygrana", "Wygral komputer", "Ok");
+                win = true;
+            }
+        }
     }
 }
