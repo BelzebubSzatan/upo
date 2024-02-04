@@ -96,5 +96,50 @@ namespace upo {
                 }
             }
         }
+        async void WinCheck()
+        {
+            if (playerCards.Count == 0)
+            {
+                await DisplayAlert("Wygrana", "Wygral gracz!", "Ok");
+                win = true;
+            }    
+            if(computerCards.Count == 0)
+            {
+                await DisplayAlert("Wygrana", "Wygral komputer", "Ok");
+                win = true;
+            }
+        }
+        async void ComputerMove()
+        {
+            if (win == true) return;
+
+            List<Card> possibleMoves = computerCards.Where(e =>
+                    (e.Color.ToString() == middleCard.Color.ToString() ||
+                    e.Value == middleCard.Value) ||
+                    (e.Color.ToString() != middleCard.Color.ToString() && e.Value == "kolor")
+            ).ToList();
+
+
+            if (possibleMoves.Count > 0)
+            {
+                Random r = new Random();
+                int n = r.Next(possibleMoves.Count - 1);
+                await Task.Delay(1000);
+                SetLastCard(possibleMoves[n]);
+                SpecialCards(playerCards, possibleMoves[n]);
+                ComputerAction.Text = "Komputer dal " + possibleMoves[n].Value + " " + possibleMoves[n].Color.ToString();
+                computerCards.Remove(possibleMoves[n]);
+            }
+            else
+            {
+                ComputerAction.Text = "Komputer Dobral";
+                computerCards.Add(deck.deckCards[0]);
+                deck.deckCards.RemoveAt(0);
+            }
+
+            playerAction = true;
+            WinCheck();
+            RenderCards();
+        }
     }
 }
