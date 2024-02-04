@@ -61,7 +61,12 @@ namespace upo {
         }
 
         private void Button_Clicked(object sender, EventArgs e) {
-
+            if(playerAction&&!win) {
+                playerCards.Add(deck.deckCards[0]);
+                deck.deckCards.RemoveAt(0);
+                playerAction = false;
+                //ComputerMove();
+            }
         }
         void SetLastCard(Card c = null)
         {
