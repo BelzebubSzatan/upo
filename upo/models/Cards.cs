@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace upo.models {
-    public class Cards {
-        List<System.Drawing.Color> colors = new List<System.Drawing.Color>() { 
-            System.Drawing.Color.Red,
-            System.Drawing.Color.Green,
-            System.Drawing.Color.Blue,
-            System.Drawing.Color.Yellow,
-        };
-        List<string> Values= new List<string>() {
-            "1","2","3","4","5","6","7","8","9","+2","+4","kolor"
-        };
+    public class Card {
+        public string Value { get; set; }
+        public System.Drawing.Color Color { get; set; }
+
+        public Button RenderCard(Card c) {
+            return new Button() {
+                Text = c.Value,
+                BackgroundColor = c.Color,
+                TextColor = System.Drawing.Color.White,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                WidthRequest = 150,
+                HeightRequest = 80,
+                Margin=new Thickness(5),
+            };
+        }
     }
 }
